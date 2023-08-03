@@ -53,7 +53,20 @@ namespace Eccomerce.Controllers
             catch (Exception ex)
             {
                 _logger.LogCustomError("CrearUsuario", ex);
+                // Mostrar el mensaje de la excepción
+                Console.WriteLine("Mensaje de la excepción: " + ex.Message);
+
+                // Mostrar la pila de llamadas (Trace)
+                Console.WriteLine("Trace de la excepción: " + ex.StackTrace);
+
+                // También puedes acceder a la excepción interna (inner exception) si la hay
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Mensaje de la excepción interna: " + ex.InnerException.Message);
+                    Console.WriteLine("Trace de la excepción interna: " + ex.InnerException.StackTrace);
+                }
                 return BadRequest($"{ex.Message}");
+
             }
 
             return Ok(response);

@@ -9,7 +9,7 @@ namespace Model.Models
     {
         public Products()
         {
-            Shipping = new HashSet<Shipping>();
+            ShippingProducts = new HashSet<ShippingProducts>();
         }
 
         public int IdProduct { get; set; }
@@ -17,6 +17,6 @@ namespace Model.Models
         public string Descriptions { get; set; }
         public decimal Price { get; set; }
 
-        public virtual ICollection<Shipping> Shipping { get; set; }
+        public virtual ICollection<ShippingProducts> ShippingProducts { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Model.DTOs;
 using Model.Models;
 using Service.Interfaces;
 
@@ -39,7 +40,7 @@ namespace Eccomerce.Controllers
 
         // POST: api/Productos
         [HttpPost]
-        public IActionResult Post([FromBody] Products producto)
+        public IActionResult Post([FromBody] ProductsDTOs producto)
         {
             var nuevoProducto = _productosService.CreateProducto(producto);
             return CreatedAtAction(nameof(Get), new { id = nuevoProducto.IdProduct }, nuevoProducto);

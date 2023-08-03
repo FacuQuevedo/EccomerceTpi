@@ -9,7 +9,7 @@ namespace Service.Interfaces
     {
         List<ProductsDTOs> GetAllProductos();
         ProductsDTOs GetProductoById(int id);
-        ProductsDTOs CreateProducto(Products producto);
+        ProductsDTOs CreateProducto(ProductsDTOs producto);
         ProductsDTOs UpdateProducto(int id, Products producto);
         void DeleteProducto(int id);
     }

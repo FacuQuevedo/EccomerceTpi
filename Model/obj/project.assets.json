@@ -2008,19 +2008,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\qvedo\\.nuget\\packages\\": {}
+    "C:\\Users\\josec\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\qvedo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\obj\\",
+      "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\qvedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

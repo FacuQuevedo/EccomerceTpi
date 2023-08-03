@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Model.DTOs;
 using Model.Models;
 using Service.Inmplementations;
 using Service.Interfaces;
@@ -38,7 +39,7 @@ namespace Eccomerce.Controllers
 
         // POST: api/Ventas
         [HttpPost]
-        public IActionResult Post([FromBody] Sales venta)
+        public IActionResult Post([FromBody] SalesDTOs venta)
         {
             var nuevaVenta = _ventasService.CreateVenta(venta);
             return CreatedAtAction(nameof(Get), new { id = nuevaVenta.IdSales }, nuevaVenta);

@@ -12,5 +12,9 @@ namespace Model.DTOs
         public DateTime DateSale { get; set; }
         public int IdUser { get; set; }
 
+        public string ShippingDestination { get; set; }
+
+        public List<ProductsDTOs> productos { get; set; }
+
     }
 }

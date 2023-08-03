@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\EccomerceApi\\EccomerceApi.csproj": {}
+    "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\EccomerceApi\\EccomerceApi.csproj": {
+    "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\EccomerceApi\\EccomerceApi.csproj",
+        "projectUniqueName": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
         "projectName": "EccomerceApi",
-        "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\EccomerceApi\\EccomerceApi.csproj",
-        "packagesPath": "C:\\Users\\qvedo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\EccomerceApi\\obj\\",
+        "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\qvedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj"
+              "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj"
               },
-              "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\Service.csproj"
+              "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj"
               }
             }
           }
@@ -48,6 +48,12 @@
           "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.0, )"
             },
@@ -91,17 +97,17 @@
         }
       }
     },
-    "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj": {
+    "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\qvedo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\obj\\",
+        "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\qvedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,17 +168,17 @@
         }
       }
     },
-    "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\Service.csproj": {
+    "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\qvedo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Service\\obj\\",
+        "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\qvedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,8 +192,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\qvedo\\OneDrive\\Escritorio\\Eccomerce\\Model\\Model.csproj"
+              "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj"
               }
             }
           }

@@ -22,23 +22,22 @@ namespace Model.Models
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Shipping> Shipping { get; set; }
+        public virtual DbSet<ShippingProducts> ShippingProducts { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Variant> Variant { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Products>(entity =>
             {
-                entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__Products__BA39E84FD6D31CD7");
+                entity.HasKey(e => e.IdProduct);
 
-                entity.Property(e => e.IdProduct)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_product");
+                entity.Property(e => e.IdProduct).HasColumnName("id_product");
 
                 entity.Property(e => e.Descriptions)
+                    .IsRequired()
                     .HasMaxLength(255)
-                    .HasColumnName("descriptions");
+                    .HasColumnName("descriptions")
+                    .IsFixedLength();
 
                 entity.Property(e => e.Price)
                     .HasColumnType("decimal(10, 2)")
@@ -47,34 +46,30 @@ namespace Model.Models
                 entity.Property(e => e.Product)
                     .IsRequired()
                     .HasMaxLength(100)
-                    .HasColumnName("product");
+                    .HasColumnName("product")
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<Rol>(entity =>
             {
-                entity.HasKey(e => e.IdRol)
-                    .HasName("PK__Rol__6ABCB5E037F87EA1");
+                entity.HasKey(e => e.IdRol);
 
-                entity.Property(e => e.IdRol)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_rol");
+                entity.Property(e => e.IdRol).HasColumnName("id_rol");
 
                 entity.Property(e => e.UserType)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(50)
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<Sales>(entity =>
             {
-                entity.HasKey(e => e.IdSales)
-                    .HasName("PK__Sales__CB70593B788010E7");
+                entity.HasKey(e => e.IdSales);
 
-                entity.Property(e => e.IdSales)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_Sales");
+                entity.Property(e => e.IdSales).HasColumnName("id_Sales");
 
                 entity.Property(e => e.DateSale)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("date_sale");
 
                 entity.Property(e => e.IdUser).HasColumnName("id_user");
@@ -83,52 +78,62 @@ namespace Model.Models
                     .WithMany(p => p.Sales)
                     .HasForeignKey(d => d.IdUser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Sales__id_user__534D60F1");
+                    .HasConstraintName("FK_Sales_Users");
             });
 
             modelBuilder.Entity<Shipping>(entity =>
             {
-                entity.HasKey(e => e.IdShipping)
-                    .HasName("PK__Shipping__46726EE9204AEB5F");
+                entity.HasKey(e => e.IdShipping);
 
-                entity.Property(e => e.IdShipping)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_shipping");
+                entity.Property(e => e.IdShipping).HasColumnName("id_shipping");
 
                 entity.Property(e => e.Destination)
                     .IsRequired()
                     .HasMaxLength(100)
-                    .HasColumnName("destination");
-
-                entity.Property(e => e.IdProduct).HasColumnName("id_product");
+                    .HasColumnName("destination")
+                    .IsFixedLength();
 
                 entity.Property(e => e.IdSales).HasColumnName("id_Sales");
 
                 entity.Property(e => e.StateEnvio)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("state_envio");
-
-                entity.HasOne(d => d.IdProductNavigation)
-                    .WithMany(p => p.Shipping)
-                    .HasForeignKey(d => d.IdProduct)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Shipping__id_pro__5629CD9C");
+                    .HasColumnName("state_envio")
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.IdSalesNavigation)
                     .WithMany(p => p.Shipping)
                     .HasForeignKey(d => d.IdSales)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Shipping__id_Sal__571DF1D5");
+                    .HasConstraintName("FK_Shipping_Sales");
+            });
+
+            modelBuilder.Entity<ShippingProducts>(entity =>
+            {
+                entity.HasKey(e => e.IdShippingProducts);
+
+                entity.Property(e => e.IdShippingProducts).HasColumnName("id_ShippingProducts");
+
+                entity.Property(e => e.IdProduct).HasColumnName("id_product");
+
+                entity.Property(e => e.IdShipping).HasColumnName("id_shipping");
+
+                entity.HasOne(d => d.IdProductNavigation)
+                    .WithMany(p => p.ShippingProducts)
+                    .HasForeignKey(d => d.IdProduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ShippingProducts_Products");
+
+                entity.HasOne(d => d.IdShippingNavigation)
+                    .WithMany(p => p.ShippingProducts)
+                    .HasForeignKey(d => d.IdShipping)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ShippingProducts_Shipping");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
-                entity.HasKey(e => e.IdUser)
-                    .HasName("PK__Users__D2D14637471A1A69");
-
-                entity.HasIndex(e => e.Mail, "UQ__Users__7A212904CC211AE2")
-                    .IsUnique();
+                entity.HasKey(e => e.IdUser);
 
                 entity.Property(e => e.IdUser).HasColumnName("id_user");
 
@@ -136,51 +141,33 @@ namespace Model.Models
 
                 entity.Property(e => e.Lastname)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("lastname");
+                    .HasMaxLength(60)
+                    .HasColumnName("lastname")
+                    .IsFixedLength();
 
                 entity.Property(e => e.Mail)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("mail");
+                    .HasMaxLength(60)
+                    .HasColumnName("mail")
+                    .IsFixedLength();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("name");
+                    .HasMaxLength(60)
+                    .HasColumnName("name")
+                    .IsFixedLength();
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(4000)
-                    .HasColumnName("password");
+                    .HasMaxLength(60)
+                    .HasColumnName("password")
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.IdRolNavigation)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.IdRol)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Users__id_rol__5070F446");
-            });
-
-            modelBuilder.Entity<Variant>(entity =>
-            {
-                entity.HasKey(e => e.IdVariant)
-                    .HasName("PK__variant__0B24D7A75A89BA03");
-
-                entity.ToTable("variant");
-
-                entity.Property(e => e.IdVariant)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id_variant");
-
-                entity.Property(e => e.Color)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("color");
-
-                entity.Property(e => e.Descriptions)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .HasColumnName("descriptions");
+                    .HasConstraintName("FK_Users_Rol");
             });
 
             OnModelCreatingPartial(modelBuilder);

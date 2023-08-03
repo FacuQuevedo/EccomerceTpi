@@ -7,13 +7,17 @@ namespace Model.Models
 {
     public partial class Shipping
     {
+        public Shipping()
+        {
+            ShippingProducts = new HashSet<ShippingProducts>();
+        }
+
         public int IdShipping { get; set; }
         public string Destination { get; set; }
         public string StateEnvio { get; set; }
-        public int IdProduct { get; set; }
         public int IdSales { get; set; }
 
-        public virtual Products IdProductNavigation { get; set; }
         public virtual Sales IdSalesNavigation { get; set; }
+        public virtual ICollection<ShippingProducts> ShippingProducts { get; set; }
     }
 }

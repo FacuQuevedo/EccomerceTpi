@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Model.DTOs;
 using Model.Models;
 
 namespace Service.Interfaces
@@ -8,7 +9,7 @@ namespace Service.Interfaces
     {
         List<Sales> GetAllVentas();
         Sales GetVentaById(int id);
-        Sales CreateVenta(Sales venta);
+        SalesDTOs CreateVenta(SalesDTOs venta);
         Sales UpdateVenta(int id, Sales venta);
         void DeleteVenta(int id);
     }

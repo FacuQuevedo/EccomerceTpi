@@ -54,9 +54,16 @@ namespace Service.Inmplementations
             }
         }
 
-        public ProductsDTOs CreateProducto(Products producto)
+        public ProductsDTOs CreateProducto(ProductsDTOs producto)
         {
-            _dbContext.Products.Add(producto);
+            Products newProduct = new Products()
+            {
+                IdProduct = producto.IdProduct,
+                Product = producto.Product,
+                Descriptions = producto.Descriptions,
+                Price = producto.Price
+            };
+            _dbContext.Products.Add(newProduct);
             _dbContext.SaveChanges();
 
             return new ProductsDTOs

@@ -10,7 +10,7 @@ namespace Eccomerce
             builder.Services.AddScoped<IAuthService, AuthSerivce>();
             builder.Services.AddScoped<IProductsService, ProductsService>();
             builder.Services.AddScoped<IShippingService, ShippingService>();
-            builder.Services.AddScoped<IVariantService, VariantService>();
+            //builder.Services.AddScoped<IVariantService, VariantService>();
             builder.Services.AddScoped<IsalesService, SalesService>();
 
         }

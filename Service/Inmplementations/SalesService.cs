@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Model.DTOs;
 using Model.Models;
 using Service.Interfaces;
 
@@ -25,11 +26,48 @@ namespace Service.Inmplementations
             return _dbContext.Sales.Find(id);
         }
 
-        public Sales CreateVenta(Sales venta)
+        public SalesDTOs CreateVenta(SalesDTOs sale)
         {
-            _dbContext.Sales.Add(venta);
+            Sales newSale = new Sales()
+            {
+                IdSales = sale.IdSales,
+                DateSale = sale.DateSale,
+                IdUser = sale.IdUser,
+            };
+            _dbContext.Sales.Add(newSale);
             _dbContext.SaveChanges();
-            return venta;
+
+            Shipping shipping = new Shipping()
+            {
+
+                Destination = sale.ShippingDestination,
+                StateEnvio = "pendiente",
+                IdSales = newSale.IdSales,
+            };
+
+            _dbContext.Shipping.Add(shipping);
+            _dbContext.SaveChanges();
+
+            // Recorremos la lista de productos y los agregamos a la base de datos
+            foreach (var product in sale.productos)
+            {
+                // Creamos un nuevo objeto Shipping para cada producto
+                ShippingProducts shippingproducts = new ShippingProducts()
+                {
+                    IdProduct = product.IdProduct,
+                    IdShipping = shipping.IdShipping,
+                };
+
+                // Aquí asumimos que el objeto "product" tiene una propiedad "IdProduct" que corresponde al IdProduct en la tabla Shipping.
+                // Asignamos el IdProduct correspondiente al objeto "Shipping".
+
+                // Agregamos el objeto "Shipping" al DbContext
+                _dbContext.ShippingProducts.Add(shippingproducts);
+            }
+
+
+            _dbContext.SaveChanges();
+            return sale;
         }
 
         public Sales UpdateVenta(int id, Sales venta)
