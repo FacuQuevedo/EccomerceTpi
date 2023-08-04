@@ -54,7 +54,9 @@ namespace Model.Models
             {
                 entity.HasKey(e => e.IdRol);
 
-                entity.Property(e => e.IdRol).HasColumnName("id_rol");
+                entity.Property(e => e.IdRol)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id_rol");
 
                 entity.Property(e => e.UserType)
                     .IsRequired()
@@ -121,13 +123,12 @@ namespace Model.Models
                 entity.HasOne(d => d.IdProductNavigation)
                     .WithMany(p => p.ShippingProducts)
                     .HasForeignKey(d => d.IdProduct)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_ShippingProducts_Products");
 
                 entity.HasOne(d => d.IdShippingNavigation)
                     .WithMany(p => p.ShippingProducts)
                     .HasForeignKey(d => d.IdShipping)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ShippingProducts_Shipping");
             });
 

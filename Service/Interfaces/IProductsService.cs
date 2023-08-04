@@ -10,7 +10,7 @@ namespace Service.Interfaces
         List<ProductsDTOs> GetAllProductos();
         ProductsDTOs GetProductoById(int id);
         ProductsDTOs CreateProducto(ProductsDTOs producto);
-        ProductsDTOs UpdateProducto(int id, Products producto);
+        ProductsDTOs UpdateProducto(ProductsDTOs producto);
         void DeleteProducto(int id);
     }
 }

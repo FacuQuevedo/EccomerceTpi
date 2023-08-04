@@ -8,9 +8,9 @@ namespace Service.Interfaces
     public interface IsalesService
     {
         List<SaleResponseDTO> GetAllVentas();
-        Sales GetVentaById(int id);
+        SaleResponseDTO GetVentaById(int idVenta);
         SalesDTOs CreateVenta(SalesDTOs venta);
-        Sales UpdateVenta(int id, Sales venta);
+        //Sales UpdateVenta(int id, Sales venta);
         void DeleteVenta(int id);
     }
 }

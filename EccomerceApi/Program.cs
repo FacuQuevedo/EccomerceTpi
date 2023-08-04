@@ -44,9 +44,9 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("SuperAdmin", policy => policy.RequireClaim("AdminType", "2"));
-    options.AddPolicy("Admin", policy => policy.RequireClaim("AdminType", "1"));
-    options.AddPolicy("SuperAdminAndAdmin", policy => policy.RequireClaim("AdminType", "1", "2"));
+    options.AddPolicy("SuperAdmin", policy => policy.RequireClaim("UserType", "2"));
+    options.AddPolicy("Admin", policy => policy.RequireClaim("UserType", "1"));
+    options.AddPolicy("SuperAdminAndAdmin", policy => policy.RequireClaim("UserType", "1", "2"));
 });
 
 // Configuracion SeriLog

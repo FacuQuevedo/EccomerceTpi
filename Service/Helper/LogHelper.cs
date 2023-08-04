@@ -1,4 +1,6 @@
-﻿namespace Eccomerce.Common
+﻿using Microsoft.Extensions.Logging;
+
+namespace Service.Helper
 {
     public static class LogHelper
     {

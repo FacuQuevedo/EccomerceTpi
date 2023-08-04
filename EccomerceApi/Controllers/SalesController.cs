@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Model.DTOs;
 using Model.Models;
 using Service.Inmplementations;
@@ -8,6 +9,8 @@ namespace Eccomerce.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class SalesController : ControllerBase
     {
         private readonly IsalesService _ventasService;
@@ -45,17 +48,17 @@ namespace Eccomerce.Controllers
             return CreatedAtAction(nameof(Get), new { id = nuevaVenta.IdSales }, nuevaVenta);
         }
 
-        // PUT: api/Ventas/{id}
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Sales venta)
-        {
-            var updatedVenta = _ventasService.UpdateVenta(id, venta);
-            if (updatedVenta == null)
-            {
-                return NotFound();
-            }
-            return Ok(updatedVenta);
-        }
+        //// PUT: api/Ventas/{id}
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, [FromBody] Sales venta)
+        //{
+        //    var updatedVenta = _ventasService.UpdateVenta(id, venta);
+        //    if (updatedVenta == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(updatedVenta);
+        //}
 
         // DELETE: api/Ventas/{id}
         [HttpDelete("{id}")]

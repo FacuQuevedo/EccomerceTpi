@@ -61,13 +61,47 @@ namespace Service.Inmplementations
         }
 
 
-
-
-
-        public Sales GetVentaById(int id)
+        public SaleResponseDTO GetVentaById(int idVenta)
         {
-            return _dbContext.Sales.Find(id);
+            Sales sale = _dbContext.Sales.FirstOrDefault(s => s.IdSales == idVenta);
+
+            if (sale == null)
+            {
+                return null; // Venta no encontrada, puedes manejar esto según tus necesidades
+            }
+
+            Shipping shipping = _dbContext.Shipping.FirstOrDefault(s => s.IdShipping == sale.IdShipping);
+
+            if (shipping == null)
+            {
+                return null; // Envío no encontrado, puedes manejar esto según tus necesidades
+            }
+
+            List<ShippingProducts> shippingProducts = _dbContext.ShippingProducts
+                .Where(sp => sp.IdShipping == sale.IdShipping)
+                .ToList();
+
+            List<ShippingProductDTO> productsdto = shippingProducts.Select(sp => new ShippingProductDTO
+            {
+                IdProduct = sp.IdProduct,
+                IdShipping = sp.IdShipping
+            }).ToList();
+
+            SaleResponseDTO saleResponse = new SaleResponseDTO
+            {
+                IdSales = sale.IdSales,
+                DateSale = sale.DateSale,
+                IdUser = sale.IdUser,
+                IdShipping = sale.IdShipping,
+                Destination = shipping.Destination,
+                StateEnvio = shipping.StateEnvio,
+                products = productsdto,
+            };
+
+            return saleResponse;
         }
+
+
 
         public SalesDTOs CreateVenta(SalesDTOs sale)
         {
@@ -115,17 +149,17 @@ namespace Service.Inmplementations
             return sale;
         }
 
-        public Sales UpdateVenta(int id, Sales venta)
-        {
-            var existingVenta = _dbContext.Sales.Find(id);
-            if (existingVenta != null)
-            {
-                existingVenta.DateSale = venta.DateSale;
-                existingVenta.IdUser = venta.IdUser;
-                _dbContext.SaveChanges();
-            }
-            return existingVenta;
-        }
+        //public Sales UpdateVenta(int id, Sales venta)
+        //{
+        //    var existingVenta = _dbContext.Sales.Find(id);
+        //    if (existingVenta != null)
+        //    {
+        //        existingVenta.DateSale = venta.DateSale;
+        //        existingVenta.IdUser = venta.IdUser;
+        //        _dbContext.SaveChanges();
+        //    }
+        //    return existingVenta;
+        //}
 
         public void DeleteVenta(int id)
         {

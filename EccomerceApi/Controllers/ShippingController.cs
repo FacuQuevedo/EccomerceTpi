@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Model.DTOs;
 using Model.Models;
 using Service.Interfaces;
@@ -7,6 +8,8 @@ namespace Eccomerce.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ShippingController : ControllerBase
     {
         private readonly IShippingService _enviosService;

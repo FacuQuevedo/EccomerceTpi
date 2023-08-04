@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fXhE5+KwoWfFDyvyT0YLSvFzkM0ARC6lOBRH57azBuSyyqz6g3kc1ZaxuzrIqs6hTkIEU3aMCVIgLYcfwtAfMA==",
+  "dgSpecHash": "CDeUjLA1hEJH3fyFyXzuL97MDRJ7Gz8ONIpz460x6wrpEdpMX2lHJcKLBWYGLtm3A7gcWDegPJEESQw2RshbVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,8 @@
     "C:\\Users\\josec\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\josec\\.nuget\\packages\\serilog\\3.0.1\\serilog.3.0.1.nupkg.sha512",
+    "C:\\Users\\josec\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\josec\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

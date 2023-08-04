@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Model.DTOs;
 using Model.Models;
 using Service.Interfaces;
@@ -7,6 +8,7 @@ namespace Eccomerce.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductosController : ControllerBase
     {
         private readonly IProductsService _productosService;
@@ -47,10 +49,10 @@ namespace Eccomerce.Controllers
         }
 
         // PUT: api/Productos/{id}
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Products producto)
+        [HttpPut("UpdateProduct")]
+        public IActionResult Put([FromBody] ProductsDTOs producto)
         {
-            var updatedProducto = _productosService.UpdateProducto(id, producto);
+            var updatedProducto = _productosService.UpdateProducto(producto);
             if (updatedProducto == null)
             {
                 return NotFound();

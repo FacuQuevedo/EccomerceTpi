@@ -8,7 +8,7 @@ namespace Model.DTOs
 {
     public class ShippingProductDTO
     {
-        public int IdProduct { get; set; }
+        public int? IdProduct { get; set; }
         public int IdShipping { get; set; }
 
     }

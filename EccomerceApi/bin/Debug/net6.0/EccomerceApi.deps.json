@@ -527,7 +527,9 @@
       "Service/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
-          "Model": "1.0.0"
+          "Model": "1.0.0",
+          "Serilog": "3.0.1",
+          "Serilog.Sinks.File": "5.0.0"
         },
         "runtime": {
           "Service.dll": {}

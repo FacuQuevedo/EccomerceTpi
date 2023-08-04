@@ -46,7 +46,7 @@ namespace Service.Inmplementations
 
         public void DeleteProducto(int id)
         {
-            var producto = _dbContext.Products.Find(id);
+            Products producto = _dbContext.Products.Find(id);
             if (producto != null)
             {
                 _dbContext.Products.Remove(producto);
@@ -75,9 +75,9 @@ namespace Service.Inmplementations
             };
         }
 
-        public ProductsDTOs UpdateProducto(int id, Products producto)
+        public ProductsDTOs UpdateProducto(ProductsDTOs producto)
         {
-            var existingProducto = _dbContext.Products.Find(id);
+            Products existingProducto = _dbContext.Products.Find(producto.IdProduct);
             if (existingProducto != null)
             {
                 existingProducto.Product = producto.Product;
@@ -89,7 +89,7 @@ namespace Service.Inmplementations
             {
                 IdProduct = existingProducto.IdProduct,
                 Product = existingProducto.Product,
-                Descripcion = existingProducto.Descriptions,
+                Descriptions = existingProducto.Descriptions,
                 Price = existingProducto.Price
             };
         }

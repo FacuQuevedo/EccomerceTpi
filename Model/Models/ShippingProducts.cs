@@ -8,7 +8,7 @@ namespace Model.Models
     public partial class ShippingProducts
     {
         public int IdShippingProducts { get; set; }
-        public int IdProduct { get; set; }
+        public int? IdProduct { get; set; }
         public int IdShipping { get; set; }
 
         public virtual Products IdProductNavigation { get; set; }
