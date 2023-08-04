@@ -7,7 +7,7 @@ namespace Service.Interfaces
 {
     public interface IsalesService
     {
-        List<Sales> GetAllVentas();
+        List<SaleResponseDTO> GetAllVentas();
         Sales GetVentaById(int id);
         SalesDTOs CreateVenta(SalesDTOs venta);
         Sales UpdateVenta(int id, Sales venta);

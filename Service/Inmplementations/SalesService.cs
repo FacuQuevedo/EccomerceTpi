@@ -16,10 +16,53 @@ namespace Service.Inmplementations
             _dbContext = dbContext;
         }
 
-        public List<Sales> GetAllVentas()
+
+        public List<SaleResponseDTO> GetAllVentas()
         {
-            return _dbContext.Sales.ToList();
+            List<Sales> sales = _dbContext.Sales.ToList();
+            List<Shipping> shippings = _dbContext.Shipping.ToList();
+            List<ShippingProducts> shippingProducts = _dbContext.ShippingProducts.ToList();
+
+            List<SaleResponseDTO> request = new List<SaleResponseDTO>();
+
+            foreach (Sales sale in sales)
+            {
+                // Buscar el envío correspondiente a la venta actual
+                Shipping shipping = shippings.FirstOrDefault(s => s.IdShipping == sale.IdShipping);
+
+                if (shipping != null)
+                {
+                    // Buscar los productos asociados al envío
+                    List<ShippingProducts> products = shippingProducts.Where(sp => sp.IdShipping == sale.IdShipping).ToList();
+
+                    // Crear una lista de ShippingProductDTO a partir de la lista filtrada products
+                    List<ShippingProductDTO> productsdto = products.Select(sp => new ShippingProductDTO
+                    {
+                        IdProduct = sp.IdProduct,
+                        IdShipping = sp.IdShipping
+                    }).ToList();
+                    // Crear el objeto SaleResponseDTO
+                    SaleResponseDTO saleResponse = new SaleResponseDTO
+                    {
+                        IdSales = sale.IdSales,
+                        DateSale = sale.DateSale,
+                        IdUser = sale.IdUser,
+                        IdShipping = sale.IdShipping,
+                        Destination = shipping.Destination,
+                        StateEnvio = shipping.StateEnvio,
+                        products = productsdto,
+                    };
+
+                    request.Add(saleResponse);
+                }
+            }
+
+            return request;
         }
+
+
+
+
 
         public Sales GetVentaById(int id)
         {
@@ -28,24 +71,25 @@ namespace Service.Inmplementations
 
         public SalesDTOs CreateVenta(SalesDTOs sale)
         {
-            Sales newSale = new Sales()
-            {
-                IdSales = sale.IdSales,
-                DateSale = sale.DateSale,
-                IdUser = sale.IdUser,
-            };
-            _dbContext.Sales.Add(newSale);
-            _dbContext.SaveChanges();
-
             Shipping shipping = new Shipping()
             {
 
                 Destination = sale.ShippingDestination,
                 StateEnvio = "pendiente",
-                IdSales = newSale.IdSales,
             };
 
             _dbContext.Shipping.Add(shipping);
+            _dbContext.SaveChanges();
+
+
+            Sales newSale = new Sales()
+            {
+                IdSales = sale.IdSales,
+                DateSale = sale.DateSale,
+                IdUser = sale.IdUser,
+                IdShipping = shipping.IdShipping
+            };
+            _dbContext.Sales.Add(newSale);
             _dbContext.SaveChanges();
 
             // Recorremos la lista de productos y los agregamos a la base de datos
@@ -65,6 +109,7 @@ namespace Service.Inmplementations
                 _dbContext.ShippingProducts.Add(shippingproducts);
             }
 
+           
 
             _dbContext.SaveChanges();
             return sale;

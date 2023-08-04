@@ -23,7 +23,6 @@ namespace Service.Inmplementations
                 IdShipping = envio.IdShipping,
                 Destination = envio.Destination,
                 StateEnvio = envio.StateEnvio,
-                IdSales = envio.IdSales
             }).ToList();
         }
 
@@ -37,7 +36,6 @@ namespace Service.Inmplementations
                     IdShipping = envio.IdShipping,
                     Destination = envio.Destination,
                     StateEnvio = envio.StateEnvio,
-                    IdSales = envio.IdSales
                 };
             }
             return null;
@@ -50,7 +48,6 @@ namespace Service.Inmplementations
                 
                 Destination = envio.Destination,
                 StateEnvio = envio.StateEnvio,
-                IdSales = envio.IdSales
             };
 
             _dbContext.Shipping.Add(newEnvio);
@@ -67,7 +64,6 @@ namespace Service.Inmplementations
             {
                 existingEnvio.Destination = envio.Destination;
                 existingEnvio.StateEnvio = envio.StateEnvio;
-                existingEnvio.IdSales = envio.IdSales;
                 _dbContext.SaveChanges();
            
                 return new ShippingDTOs
@@ -75,8 +71,7 @@ namespace Service.Inmplementations
                     IdShipping = envio.IdShipping,
                     Destination = envio.Destination,
                     StateEnvio = envio.StateEnvio,
-                    IdProduct = envio.IdProduct,
-                    IdSales = envio.IdSales
+                 
                 };
             }
             return null;

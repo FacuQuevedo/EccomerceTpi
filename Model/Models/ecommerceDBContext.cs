@@ -72,7 +72,15 @@ namespace Model.Models
                     .HasColumnType("datetime")
                     .HasColumnName("date_sale");
 
+                entity.Property(e => e.IdShipping).HasColumnName("id_shipping");
+
                 entity.Property(e => e.IdUser).HasColumnName("id_user");
+
+                entity.HasOne(d => d.IdShippingNavigation)
+                    .WithMany(p => p.Sales)
+                    .HasForeignKey(d => d.IdShipping)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sales_Shipping");
 
                 entity.HasOne(d => d.IdUserNavigation)
                     .WithMany(p => p.Sales)
@@ -93,19 +101,11 @@ namespace Model.Models
                     .HasColumnName("destination")
                     .IsFixedLength();
 
-                entity.Property(e => e.IdSales).HasColumnName("id_Sales");
-
                 entity.Property(e => e.StateEnvio)
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("state_envio")
                     .IsFixedLength();
-
-                entity.HasOne(d => d.IdSalesNavigation)
-                    .WithMany(p => p.Shipping)
-                    .HasForeignKey(d => d.IdSales)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Shipping_Sales");
             });
 
             modelBuilder.Entity<ShippingProducts>(entity =>
@@ -159,7 +159,7 @@ namespace Model.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(60)
+                    .HasMaxLength(255)
                     .HasColumnName("password")
                     .IsFixedLength();
 

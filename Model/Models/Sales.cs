@@ -7,16 +7,12 @@ namespace Model.Models
 {
     public partial class Sales
     {
-        public Sales()
-        {
-            Shipping = new HashSet<Shipping>();
-        }
-
         public int IdSales { get; set; }
         public DateTime DateSale { get; set; }
         public int IdUser { get; set; }
+        public int IdShipping { get; set; }
 
+        public virtual Shipping IdShippingNavigation { get; set; }
         public virtual Users IdUserNavigation { get; set; }
-        public virtual ICollection<Shipping> Shipping { get; set; }
     }
 }

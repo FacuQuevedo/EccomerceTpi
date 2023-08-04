@@ -14,7 +14,7 @@ using System.Security.Claims;
 using Microsoft.Extensions.Options;
 using Service.Helper;
 using Model.ViewModels;
-
+using Service.Helper;
 namespace Service.Inmplementations
 {
     public class AuthSerivce : IAuthService
@@ -49,7 +49,7 @@ namespace Service.Inmplementations
                 IdRol = user.IdRol,
                 Name = user.Name,
                 Lastname = user.Lastname,
-                Password=user.Password,
+                Password = EncryptHelper.GetSHA256(user.Password),
                 Mail = user.Mail
 
             };
@@ -63,7 +63,7 @@ namespace Service.Inmplementations
 
         public string Login(AuthDTO user)
         {
-            Users? existingUser = _eccomerceDBContext.Users.FirstOrDefault(x => x.Mail == user.Mail && x.Password == user.Password);
+            Users? existingUser = _eccomerceDBContext.Users.FirstOrDefault(x => x.Mail == user.Mail && x.Password == EncryptHelper.GetSHA256(user.Password));
 
             if (existingUser == null)
             {
@@ -85,7 +85,7 @@ namespace Service.Inmplementations
                     {
                         new Claim(ClaimTypes.NameIdentifier, user.IdUser.ToString()),
                         new Claim(ClaimTypes.Email, user.Mail),
-                        new Claim("AdminType", user.IdRol.ToString())
+                        new Claim("UserType", user.IdRol.ToString())
                     }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

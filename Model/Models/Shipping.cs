@@ -9,15 +9,15 @@ namespace Model.Models
     {
         public Shipping()
         {
+            Sales = new HashSet<Sales>();
             ShippingProducts = new HashSet<ShippingProducts>();
         }
 
         public int IdShipping { get; set; }
         public string Destination { get; set; }
         public string StateEnvio { get; set; }
-        public int IdSales { get; set; }
 
-        public virtual Sales IdSalesNavigation { get; set; }
+        public virtual ICollection<Sales> Sales { get; set; }
         public virtual ICollection<ShippingProducts> ShippingProducts { get; set; }
     }
 }
