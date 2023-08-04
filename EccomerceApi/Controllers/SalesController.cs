@@ -24,48 +24,83 @@ namespace Eccomerce.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var ventas = _ventasService.GetAllVentas();
-            return Ok(ventas);
+            try
+            {
+                var ventas = _ventasService.GetAllVentas();
+                return Ok(ventas);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener las ventas: {ex.Message}");
+            }
         }
 
         // GET: api/Ventas/{id}
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var venta = _ventasService.GetVentaById(id);
-            if (venta == null)
+            try
             {
-                return NotFound();
+                var venta = _ventasService.GetVentaById(id);
+                if (venta == null)
+                {
+                    return NotFound();
+                }
+                return Ok(venta);
             }
-            return Ok(venta);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener la venta: {ex.Message}");
+            }
         }
 
         // POST: api/Ventas
         [HttpPost]
         public IActionResult Post([FromBody] SalesDTOs venta)
         {
-            var nuevaVenta = _ventasService.CreateVenta(venta);
-            return CreatedAtAction(nameof(Get), new { id = nuevaVenta.IdSales }, nuevaVenta);
+            try
+            {
+                var nuevaVenta = _ventasService.CreateVenta(venta);
+                return CreatedAtAction(nameof(Get), new { id = nuevaVenta.IdSales }, nuevaVenta);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al crear la venta: {ex.Message}");
+            }
         }
 
         //// PUT: api/Ventas/{id}
         //[HttpPut("{id}")]
         //public IActionResult Put(int id, [FromBody] Sales venta)
         //{
-        //    var updatedVenta = _ventasService.UpdateVenta(id, venta);
-        //    if (updatedVenta == null)
+        //    try
         //    {
-        //        return NotFound();
+        //        var updatedVenta = _ventasService.UpdateVenta(id, venta);
+        //        if (updatedVenta == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return Ok(updatedVenta);
         //    }
-        //    return Ok(updatedVenta);
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Error al actualizar la venta: {ex.Message}");
+        //    }
         //}
 
         // DELETE: api/Ventas/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _ventasService.DeleteVenta(id);
-            return Ok();
+            try
+            {
+                _ventasService.DeleteVenta(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al eliminar la venta: {ex.Message}");
+            }
         }
     }
 }

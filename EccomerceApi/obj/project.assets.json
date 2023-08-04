@@ -2603,19 +2603,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josec\\.nuget\\packages\\": {}
+    "C:\\Users\\tomia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
+      "projectUniqueName": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
       "projectName": "EccomerceApi",
-      "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
-      "packagesPath": "C:\\Users\\josec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\EccomerceApi\\obj\\",
+      "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\EccomerceApi\\EccomerceApi.csproj",
+      "packagesPath": "C:\\Users\\tomia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\EccomerceApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\josec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tomia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2629,11 +2629,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Model\\Model.csproj"
+            "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\Model\\Model.csproj"
             },
-            "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\josec\\Desktop\\EccomerceTpi\\Service\\Service.csproj"
+            "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\tomia\\OneDrive\\Escritorio\\Ecommerce API\\EccomerceTpi\\Service\\Service.csproj"
             }
           }
         }

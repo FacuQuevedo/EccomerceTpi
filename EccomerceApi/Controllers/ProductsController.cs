@@ -24,48 +24,83 @@ namespace Eccomerce.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var productos = _productosService.GetAllProductos();
-            return Ok(productos);
+            try
+            {
+                var productos = _productosService.GetAllProductos();
+                return Ok(productos);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener los productos: {ex.Message}");
+            }
         }
 
         // GET: api/Productos/{id}
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var producto = _productosService.GetProductoById(id);
-            if (producto == null)
+            try
             {
-                return NotFound();
+                var producto = _productosService.GetProductoById(id);
+                if (producto == null)
+                {
+                    return NotFound();
+                }
+                return Ok(producto);
             }
-            return Ok(producto);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener el producto: {ex.Message}");
+            }
         }
 
         // POST: api/Productos
         [HttpPost]
         public IActionResult Post([FromBody] ProductsDTOs producto)
         {
-            var nuevoProducto = _productosService.CreateProducto(producto);
-            return CreatedAtAction(nameof(Get), new { id = nuevoProducto.IdProduct }, nuevoProducto);
+            try
+            {
+                var nuevoProducto = _productosService.CreateProducto(producto);
+                return CreatedAtAction(nameof(Get), new { id = nuevoProducto.IdProduct }, nuevoProducto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al crear el producto: {ex.Message}");
+            }
         }
 
         // PUT: api/Productos/{id}
         [HttpPut("UpdateProduct")]
         public IActionResult Put([FromBody] ProductsDTOs producto)
         {
-            var updatedProducto = _productosService.UpdateProducto(producto);
-            if (updatedProducto == null)
+            try
             {
-                return NotFound();
+                var updatedProducto = _productosService.UpdateProducto(producto);
+                if (updatedProducto == null)
+                {
+                    return NotFound();
+                }
+                return Ok(updatedProducto);
             }
-            return Ok(updatedProducto);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el producto: {ex.Message}");
+            }
         }
 
         // DELETE: api/Productos/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _productosService.DeleteProducto(id);
-            return Ok();
+            try
+            {
+                _productosService.DeleteProducto(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al eliminar el producto: {ex.Message}");
+            }
         }
     }
 }

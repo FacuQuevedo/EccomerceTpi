@@ -23,48 +23,83 @@ namespace Eccomerce.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var envios = _enviosService.GetAllEnvios();
-            return Ok(envios);
+            try
+            {
+                var envios = _enviosService.GetAllEnvios();
+                return Ok(envios);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener los envíos: {ex.Message}");
+            }
         }
 
         // GET: api/Envios/{id}
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var envio = _enviosService.GetEnvioById(id);
-            if (envio == null)
+            try
             {
-                return NotFound();
+                var envio = _enviosService.GetEnvioById(id);
+                if (envio == null)
+                {
+                    return NotFound();
+                }
+                return Ok(envio);
             }
-            return Ok(envio);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al obtener el envío: {ex.Message}");
+            }
         }
 
         // POST: api/Envios
         [HttpPost]
         public IActionResult Post([FromBody] ShippingDTOs envio)
         {
-            var nuevoEnvio = _enviosService.CreateEnvio(envio);
-            return CreatedAtAction(nameof(Get), new { id = nuevoEnvio.IdShipping }, nuevoEnvio);
+            try
+            {
+                var nuevoEnvio = _enviosService.CreateEnvio(envio);
+                return CreatedAtAction(nameof(Get), new { id = nuevoEnvio.IdShipping }, nuevoEnvio);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al crear el envío: {ex.Message}");
+            }
         }
 
         // PUT: api/Envios/{id}
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] ShippingDTOs envio)
         {
-            var updatedEnvio = _enviosService.UpdateEnvio(id, envio);
-            if (updatedEnvio == null)
+            try
             {
-                return NotFound();
+                var updatedEnvio = _enviosService.UpdateEnvio(id, envio);
+                if (updatedEnvio == null)
+                {
+                    return NotFound();
+                }
+                return Ok(updatedEnvio);
             }
-            return Ok(updatedEnvio);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al actualizar el envío: {ex.Message}");
+            }
         }
 
         // DELETE: api/Envios/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _enviosService.DeleteEnvio(id);
-            return Ok();
+            try
+            {
+                _enviosService.DeleteEnvio(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al eliminar el envío: {ex.Message}");
+            }
         }
     }
 }
